@@ -1,11 +1,13 @@
-# Simple Password Generator
-# Fixed length password with a mix of uppercase, lowercase and numbers
+# Title: Simple Password Generator
+# Description: Generate a password with a mix of uppercase, lowercase and 
+# numbers, with the option to specify the desired length.
+# Author: Simon Willcock
+# Author Email: github@willcock.com.au
 
 import random, argparse
 
 parser = argparse.ArgumentParser(description='Generates a password using a mix of upperase, lowercase, numbers and optionally, symbols')
 parser.add_argument('-l','--length', type=int, default=8, help='Specify the desired length of the password. Default = 8')
-# parser.add_argument('-s','--symbols', type=bool, default=False, help='Specify whether the password should include symbols. Default = False')
 args = vars(parser.parse_args())
 
 # Set 1 - Numers
@@ -17,11 +19,9 @@ upperChars = ['A','B','C','D','E','F','G','H','I','J','L','M','N','O','P','Q','R
 # Set 4 (Optional) - Symbols
 symbolChars = ['#','!','?','@','%','$','%','&','*','^']
 
-
 tempPassLength = 0
 maxPassLength = args['length']
 generatedPass = ""
-
 
 def getPassChar(charSet):
 	# Return character from the given list of characters
@@ -31,10 +31,9 @@ def getPassChar(charSet):
 
 def getCharSet(charSetNum = 0):
 	# Return list of characters based on given number
-
+	
+	# Set number of lists defined above
 	numCharSets = 3
-	# if args['symbols'] == True:
-	#	numCharSets = 4
 
 	# If no number given, return a random list
 	if charSetNum == 0:
@@ -44,8 +43,6 @@ def getCharSet(charSetNum = 0):
 		return numChars
 	elif charSetNum == 2:
 		return lowerChars
-	# elif charSetNum == 4:
-	#	return symbolChars
 	else:
 		return upperChars
 
